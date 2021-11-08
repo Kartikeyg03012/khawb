@@ -1,16 +1,20 @@
 package com.ngo.khawb.service;
 
-import java.util.List;
-
+import com.ngo.khawb.model.User;
 import org.springframework.stereotype.Component;
 
-import com.ngo.khawb.model.User;
-import com.ngo.khawb.repository.UserRepository;
+import java.util.List;
 
 @Component
 public interface UserService {
-	
-	User addUser(User user);
-	
-	List<User> getAllUser();
+
+  User addUser(User user);
+
+  List<User> getAllUser();
+
+  User getDataByEmailId(String email);
+
+  User updateUserData(User user, long id);
+
+  void DeleteAccount(long id);
 }

@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class KhawbApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KhawbApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(KhawbApplication.class, args);
+  }
 }
