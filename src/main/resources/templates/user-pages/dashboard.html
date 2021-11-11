@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyemleaf.org">
+
+<head>
+    <link rel="icon" th:href="@{./img/logo ss.jpg}"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+
+    <!-- animate css -->
+    <link rel="stylesheet" href="../src/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;700&family=Source+Sans+Pro:wght@200;300;400;600&display=swap"
+            rel="stylesheet">
+
+    <!-- icons -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css'>
+
+
+    <link rel="stylesheet" th:href="@{./css/details.css}">
+
+    <title>Dashboard</title>
+
+    <!-- CSS only -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+            crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+            crossorigin="anonymous"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+    <!--Font Awsome  -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'
+            crossorigin='anonymous'></script>
+    <!-- CSS only -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+</head>
+
+<body th:object="${data}">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <img th:src="@{./img/logo.jpg}" width="150" height="120" alt="logo"/>
+        <a class="navbar-brand" th:href="@{/home}">Khawb-The NGO</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <span th:text="'Hello, '+${data.name}" style="margin: 20px"></span>
+        </div>
+        <div th:if="${session.msg}" th:classappend="${session.type}"
+             class="alert" role="alert">
+            <p th:text="${session.msg}"></p>
+            <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+        </div>
+        <a th:href="@{/logout}">
+            <button class="btn btn-moving-gradient btn-moving-gradient--red mx-2">LOGOUT</button>
+        </a>
+    </div>
+</nav>
+
+<div th:if="${data.admin!=true}">
+    <div class="page-content page-container" id="page-content">
+        <div class="padding">
+            <div class="row container d-flex justify-content-center">
+                <div class="col-xl-6 col-md-12">
+                    <div class="card user-card-full">
+                        <div class="row m-l-0 m-r-0">
+                            <div class="col-sm-4 bg-c-lite-green user-profile">
+                                <div class="card-block text-center text-white">
+                                    <br><br>
+                                    <div class="m-b-25"><img th:src="@{'/img/'+${data.userImageUrl}}" class="img-responsive"
+                                                             height="80%" width="80%" alt="Not Available"/></div>
+                                    <h6 class="f-w-600"></h6>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="card-block">
+                                    <br>
+                                    <h6 class="m-b-20 p-b-5 b-b-default f-w-600">USER-DETAILS</h6>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Full Name</p>
+                                            <h6 class="text-muted f-w-400" th:text="${data.name}"></h6>
+                                        </div>
+                                        <!--                                    <div class="col-sm-6">-->
+                                        <!--                                        <p class="m-b-10 f-w-600">Role</p>-->
+                                        <!--                                        <h6 class="text-muted f-w-400" th:text="${data.role}"></h6>-->
+                                        <!--                                    </div>-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Email</p>
+                                            <h6 class="text-muted f-w-400" th:text="${data.email}"></h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Phone</p>
+                                            <h6 class="text-muted f-w-400" th:text="${data.number}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Address</p>
+                                            <h6 class="text-muted f-w-400" th:text="${data.address}"></h6>
+                                        </div>
+                                        <div class=" col-sm-6">
+                                            <p class="m-b-10 f-w-600">City</p>
+                                            <h6 class="text-muted f-w-400" th:text="${data.city}"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">State</p>
+                                            <h6 class="text-muted f-w-400" th:text="${data.state}"></h6>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <p class="m-b-10 f-w-600">Pin Code</p>
+                                            <h6 class="text-muted f-w-400" th:text="${data.pinCode}"></h6>
+                                        </div>
+                                    </div>
+                                    <form th:action=" @{'/user/update-profile/'+${data.id}}"
+                                          method="POST">
+                                        <button type="submit" class="btn btn-primary">Edit Profile</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <p class="container my-3 ml-5">
+            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample1"
+                    aria-expanded="false" aria-controls="collapseExample1">
+                Add Dreams
+            </button>
+            <!--        <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample2"-->
+            <!--                aria-expanded="false" aria-controls="collapseExample2">-->
+            <!--            Add testimonials-->
+            <!--        </button>-->
+            <!--        <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample"-->
+            <!--                aria-expanded="false" aria-controls="collapseExample">-->
+            <!--            My Testimonials-->
+            <!--        </button>-->
+            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample3"
+                    aria-expanded="false" aria-controls="collapseExample3">
+                My Dreams
+            </button>
+            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample4"
+                    aria-expanded="false" aria-controls="collapseExample4">
+                My Wishlist
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample1">
+            <div class="card card-body text-dark">
+
+                <form th:action="@{/user-dream/add-dream}" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Enter Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="switch">
+                            <input type="checkbox" id="show-hint" onclick="showHint();" data-inline="true" data-theme="c" name="paid">
+                            <span class="slider round"></span>
+                        </label>
+                        Are you request for any kind of financial help?
+                    </div>
+                    <div class="form-group">
+                        <div id="hint-toggle" class="ui-body ui-body-e" style="display: none">
+                            <label for="title">Amount</label>
+                            <input type="number" class="form-control" placeholder="Enter amount" name="amount">
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+    function showHint(event){
+    $("#hint-toggle").toggle();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </script>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample2">
+            <div class="card card-body text-dark">
+
+                <form>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Enter Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Choose Image</label>
+                        <input type="file" class="form-control" id="file" name="image_url"></input>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample3">
+            <div class="card card-body text-dark">
+                <section class="light-section">
+                    <div class="container-fluid">
+                        <h2 id="ongoing-auc">My Dreams</h2>
+                        <div class="card-deck">
+                            <div class="card" th:each="l:${list}">
+                                <!--                            <img th:src="@{'/img/'+${l.image_url}}" src="#"-->
+                                <!--                                 class="card-img-top" alt="Not Avaliable">-->
+                                <div class="card-body">
+                                    <a style="text-decoration: none" href="#"
+                                       th:href="@{'productDetailsById/'+${l.id}}" class="card-title">
+                                        <h5 class="ongoing"></h5>
+                                    </a>
+                                    Title: <span th:text="${l.title}"></span> <br>
+                                    Description: <span th:text="${l.description}"></span> <br>
+                                    Status: <span th:text="${l.status}"></span> <br>
+                                    Paid (Yes/No): <span th:text="${l.paid}"></span> <br>
+                                    Amount (If applicable): <span th:text="${l.amount}"></span> <br>
+                                    Verified: <span th:text="${l.adminVerified}"></span> <br>
+                                    Total Vote: <span th:text="${l.upVote}"></span> <br>
+                                    Publicly Visible (Yes/No): <span th:text="${l.archive}"></span> <br>
+                                    Report Count: <span th:text="${l.reportCount}"></span> <br>
+                                </div>
+                                <div class="card-footer">
+                                    <br/>
+                                    <a
+                                            th:href="@{'/user-dream/update-page/'+${l.id}}">
+                                        <button type="submit" class="btn btn-outline-primary"
+                                                value="Edit">
+                                            &nbsp;&nbsp;Edit Dream
+                                        </button>
+                                    </a>
+                                    <br/>
+                                    <a
+                                            th:href="@{'/user-dream/status/'+${l.id}+'/Completed'}">
+                                        <button type="submit" class="btn btn-outline-success"
+                                                value="Mark As Completed">
+                                            &nbsp;&nbsp;Mark As Completed
+                                        </button>
+                                    </a>
+                                    <br/><a
+                                        th:href="@{'/user-dream/remove/'+${l.id}}">
+                                    <button type="submit" onclick="confirm('Do you want to delete?')" class="btn btn-outline-danger">
+                                        &nbsp;&nbsp;Delete
+                                    </button>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="collapse" id="collapseExample4">
+            <div class="card card-body text-dark">
+                <section class="light-section">
+                    <div class="container-fluid">
+                        <h2 id="ongoing-auc">My WishList</h2>
+                        <div th:if="${session.msg}" th:classappend="${session.type}"
+                             class="alert" role="alert">
+                            <p th:text="${session.msg}"></p>
+                            <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+                        </div>
+                        <div class="card-deck">
+                            <div class="card" th:each="l:${wishlist}">
+                                <!--                            <img th:src="@{'/img/'+${l.image_url}}" src="#"-->
+                                <!--                                 class="card-img-top" alt="Not Avaliable">-->
+                                <div class="card-body">
+                                    <p class="card-text" th:text="${l.description}"></p>
+                                    Title: <span th:text="${l.title}"></span> <br>
+                                    Description: <span th:text="${l.description}"></span> <br>
+                                    Status: <span th:text="${l.status}"></span> <br>
+                                    Verified: <span th:text="${l.adminVerified}"></span> <br>
+                                    Total Vote: <span th:text="${l.upVote}"></span> <br>
+                                    Report Count: <span th:text="${l.reportCount}"></span> <br>
+                                </div>
+                                <div class="card-footer">
+                                    <br>
+                                    <a
+                                            th:href="@{'user-dream/complete'+${l.id}}">
+                                        <button type="submit" class="btn btn-outline-primary"
+                                                value="Mark As Completed">
+                                            <i class="fa fa-heart-o" style="font-size: 22px;"></i>&nbsp;&nbsp;Mark As Completed
+                                        </button>
+                                    </a> <a
+                                        th:href="@{'user-dream/remove/'+${l.id}}">
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        <i class="fa fa-heart-o" style="font-size: 22px;"></i>&nbsp;&nbsp;Delete
+                                    </button>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div th:if="${data.admin==true}">
+    <br/>
+    <!--    <div class="container">-->
+    <!--        <p class="container my-3 ml-5">-->
+    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample1"-->
+    <!--                    aria-expanded="false" aria-controls="collapseExample1">-->
+    <!--                Show Dreams-->
+    <!--            </button>-->
+    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample2"-->
+    <!--                    aria-expanded="false" aria-controls="collapseExample2">-->
+    <!--                Show Users-->
+    <!--            </button>-->
+    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample"-->
+    <!--                    aria-expanded="false" aria-controls="collapseExample">-->
+    <!--                Show Queries-->
+    <!--            </button>-->
+    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample3"-->
+    <!--                    aria-expanded="false" aria-controls="collapseExample3">-->
+    <!--                Donation Requests-->
+    <!--            </button>-->
+    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample4"-->
+    <!--                    aria-expanded="false" aria-controls="collapseExample4">-->
+    <!--                My Wishlist-->
+    <!--            </button>-->
+    <!--        </p>-->
+    <!--        <div class="collapse" id="collapseExample1">-->
+    <!--            <div class="card card-body text-dark">-->
+
+    <!--                <h2>this is 1</h2>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <!--        <div class="collapse" id="collapseExample2">-->
+    <!--            <div class="card card-body text-dark">-->
+    <!--                <h2>this is 2</h2>-->
+
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <!--        <div class="collapse" id="collapseExample3">-->
+    <!--            <div class="card card-body text-dark">-->
+    <!--                <h2>this is 3</h2>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <!--        <div class="collapse" id="collapseExample4">-->
+    <!--            <div class="card card-body text-dark">-->
+    <!--                <h2>this is 4</h2>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+
+    <!--    </div>-->
+    <script>
+function ShowAndHide() {
+    var x = document.getElementById('SectionName');
+    if (x.style.display == 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <script>
+function ShowAndHide2() {
+    var x = document.getElementById('SectionName2');
+    if (x.style.display == 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <script>
+function ShowAndHide3() {
+    var x = document.getElementById('SectionName3');
+    if (x.style.display == 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <script>
+function ShowAndHide4() {
+    var x = document.getElementById('SectionName4');
+    if (x.style.display == 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <script>
+function ShowAndHide5() {
+    var x = document.getElementById('SectionName5');
+    if (x.style.display == 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <div class="container">
+        <p class="container my-3 ml-5">
+            <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide()">Show Dreams</button>
+            <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide2()">Show Users</button>
+            <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide3()">Show Queries</button>
+            <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide4()">Donation Requests</button>
+            <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide5()">BPL Verification</button>
+        </p>
+        <div ID="SectionName" STYLE="display:none">
+            <h2 class="text-center">
+                All Dreams
+            </h2>
+
+            <div style="margin-left: 30px">
+                SORT BY: <a th:href="@{'/admin/sorting-product/all/0'}">
+                <button
+                        class="btn btn-outline-primary">ALL
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-product/complete/0'}">
+                <button
+                        class="btn btn-outline-primary">Complete
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-product/pending/0'}">
+                <button
+                        class="btn btn-outline-primary">Pending
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-product/Processing/0'}">
+                <button
+                        class="btn btn-outline-primary">In Process
+                </button>
+            </a> <a
+                    th:href="@{/admin/sorting-product/verified/0}">
+                <button
+                        class="btn btn-outline-primary">Verified
+                </button>
+            </a><a
+                    th:href="@{/admin/sorting-product/notverified/0}">
+                <button
+                        class="btn btn-outline-primary">Not Verified
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-product/archive/0'}">
+                <button
+                        class="btn btn-outline-primary">Archive
+                </button>
+            </a><a
+                    th:href="@{'/admin/sorting-product/unarchive/0'}">
+                <button
+                        class="btn btn-outline-primary">Un Archive
+                </button>
+            </a>
+            </div>
+            <div style="margin: 10px" class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">DID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Paid</th>
+                        <th scope="col">Amount</th>
+
+                        <th scope="col">Description</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Verified</th>
+                        <th scope="col">Archive</th>
+                        <th scope="col">Report Count</th>
+                        <th scope="col">Total Vote</th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="table-success" th:each="l:${allDreams}">
+                        <th th:text="${'KTNDID'+l.id}"></th>
+
+                        <td><a href="#"
+                               th:href="@{'/admin/productDetailsById/'+${l.id}}"
+                               th:text="${l.title}"></a></td>
+                        <th th:text="${l.paid}"></th>
+                        <td th:text="${l.amount}"></td>
+
+                        <td th:text="${l.description}"></td>
+                        <td th:text="${l.status}"></td>
+                        <td th:text="${l.adminVerified}"></td>
+                        <td th:text="${l.archive}"></td>
+                        <td th:text="${l.reportCount}"></td>
+                        <td th:text="${l.upVote}"></td>
+                        <td>
+                            <div>
+                                <a th:href="@{'/admin/product-done/'+${l.id}}">
+                                    <button
+                                            onclick="confirm('Are You Sure Want To Continue.. ')">
+                                        <i class='fas fa-power-off' style='font-size: 24px;color:blue'></i>
+                                    </button>
+                                </a> <a th:href="@{'/admin/product-visible/'+${l.id}}">
+                                <button
+                                        onclick="confirm('Are You Sure Want To Continue.. ')">
+                                    <i class='fas fa-check-circle' style='font-size: 24px'></i>
+                                </button>
+                            </a> <a th:href="@{'/admin/archive-product/'+${l.id}}">
+                                <button
+                                        onclick="confirm('Are You Sure Want To Continue.. ')">
+                                    <i class='fas fa-eye-slash'
+                                       style='font-size: 24px; color: red;'></i>
+                                </button>
+                            </a> <br>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <br> <br>
+            <!-- This is Pagination -->
+            <!--            <nav aria-label="Page navigation example">-->
+            <!--                <ul class="pagination justify-content-center">-->
+            <!--                    <li th:classappend="${currentpage!=0}?'':'disabled'"-->
+            <!--                        class="page-item"><a th:href="@{${currentpage-1}}"-->
+            <!--                                             class="page-link" href="#" tabindex="-1">Previous</a></li>-->
+
+            <!--                    <li th:classappend="${currentpage==i-1?'active':''}"-->
+            <!--                        th:each="i : ${#numbers.sequence(1,totalpages)}" class="page-item"><a-->
+            <!--                            th:href="@{${i-1}}" class="page-link" href="#"><span-->
+            <!--                            th:text="${i}"></span></a></li>-->
+
+
+            <!--                    <li th:classappend="${currentpage+1 !=totalpages}?'':'disabled'"-->
+            <!--                        class="page-item"><a th:href="@{${currentpage+1}}"-->
+            <!--                                             class="page-link" href="#">Next</a></li>-->
+            <!--                </ul>-->
+            <!--            </nav>-->
+            <script src='https://kit.fontawesome.com/a076d05399.js'
+                    crossorigin='anonymous'></script>
+
+        </div>
+        <div ID="SectionName2" STYLE="display:none">
+            <h2 class="text-center">
+                All Users
+            </h2>
+            <div style="margin-left: 30px">
+                SORT BY: <a th:href="@{'/admin/sorting-user/all/0'}">
+                <button
+                        class="btn btn-outline-primary">ALL
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-user/true/0'}">
+                <button
+                        class="btn btn-outline-primary">Verified
+                </button>
+            </a> <a
+                    th:href="@{/admin/sorting-user/false/0}">
+                <button
+                        class="btn btn-outline-primary">Un Verified
+                </button>
+            </a> <a
+                    th:href="@{/admin/sorting-user/request/0}">
+                <button
+                        class="btn btn-outline-primary">Seller Requests
+                </button>
+            </a><a
+                    th:href="@{/admin/sorting-user/ROLE_BUYER/0}">
+                <button
+                        class="btn btn-outline-primary">Buyers
+                </button>
+            </a> <a
+                    th:href="@{/admin/sorting-user/ROLE_SELLER/0}">
+                <button
+                        class="btn btn-outline-primary">Sellers
+                </button>
+            </a>&nbsp;<a
+                    th:href="@{'/admin/sorting-user/archive/0'}">
+                <button
+                        class="btn btn-outline-primary">Archive
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-user/unarchive/0'}">
+                <button
+                        class="btn btn-outline-primary">Un Archive
+                </button>
+            </a>
+            </div>
+            <div style="margin: 10px" class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">UID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Number</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Zip-Code</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">ROLE</th>
+                        <th scope="col">Archive</th>
+                        <th scope="col">Verified</th>
+                        <th scope="col">Admin Verified</th>
+                        <th scope="col">Flag Count</th>
+                        <th scope="col">Admin</th>
+                        <th scope="col">Dreamer</th>
+                        <th scope="col">User Image</th>
+                        <th scope="col">Government ID</th>
+                        <th scope="col">BPL Card</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:classappend="table-danger" class="" th:each="l:${allUsers}">
+                        <th th:text="${'KTNUID'+l.id}"></th>
+
+                        <td><a href="#"
+                               th:href="@{'/admin/show-my-products/'+${l.id}+'/0'}"
+                               th:text="${l.name}"></a></td>
+                        <td th:text="${l.email}"></td>
+                        <td th:text="${l.number}"></td>
+                        <th th:text="${l.address}"></th>
+                        <td th:text="${l.city}"></td>
+                        <td th:text="${l.state}"></td>
+                        <td th:text="${l.pinCode}"></td>
+                        <td th:text="${l.created_date}"></td>
+                        <td th:text="${l.role}"></td>
+                        <td th:text="${l.archive}"></td>
+                        <td th:text="${l.verifiedStatus}"></td>
+                        <td th:text="${l.verifyByAdmin}"></td>
+                        <td th:text="${l.flagCount}"></td>
+                        <td th:text="${l.admin}"></td>
+                        <td th:text="${l.dreamer}"></td>
+
+                        <td><img th:src="@{'/img/'+${data.userImageUrl}}" class="img-responsive" alt="Not Available"></td>
+                        <td><img th:src="@{'/img/'+${data.governmentIdImageUrl}}" class="img-responsive" alt="Not Available"></td>
+                        <td><img th:src="@{'./img/'+${data.bplCardUrl}}" class="img-responsive" alt="Not Available"></td>
+
+
+                        <td>
+                            <div>
+                                <a th:href="@{'/user/verified/'+${l.id}}">
+                                    <button
+                                            onclick="confirm('This User Will Become Admin Verified, Are You Sure Want To Continue.. ')">
+                                        <i class='fas fa-user-check' style='font-size: 24px'></i>
+                                    </button>
+                                </a> <a th:href="@{'/user/archive/'+${l.id}}">
+                                <button
+                                        onclick="confirm('Are You Sure Want To Continue.. ')">
+                                    <i class='fas fa-user-slash'
+                                       style='font-size: 24px; color: red;'></i>
+                                </button>
+                            </a> <br>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <br> <br>
+            <!-- This is Pagination -->
+            <!--                    <nav aria-label="Page navigation example">-->
+            <!--                        <ul class="pagination justify-content-center">-->
+            <!--                            <li th:classappend="${currentpage!=0}?'':'disabled'"-->
+            <!--                                class="page-item"><a th:href="@{${currentpage-1}}"-->
+            <!--                                                     class="page-link" href="#" tabindex="-1">Previous</a></li>-->
+
+            <!--                            <li th:classappend="${currentpage==i-1?'active':''}"-->
+            <!--                                th:each="i : ${#numbers.sequence(1,totalpages)}" class="page-item"><a-->
+            <!--                                    th:href="@{${i-1}}" class="page-link" href="#"><span-->
+            <!--                                    th:text="${i}"></span></a></li>-->
+
+
+            <!--                            <li th:classappend="${currentpage+1 !=totalpages}?'':'disabled'"-->
+            <!--                                class="page-item"><a th:href="@{${currentpage+1}}"-->
+            <!--                                                     class="page-link" href="#">Next</a></li>-->
+            <!--                        </ul>-->
+            <!--                    </nav>-->
+            <script src='https://kit.fontawesome.com/a076d05399.js'
+                    crossorigin='anonymous'></script>
+        </div>
+        <div ID="SectionName3" STYLE="display:none"><h2 class="text-center">
+            All Queries
+        </h2></div>
+        <div ID="SectionName4" STYLE="display:none"><h2 class="text-center">
+            All Requests
+        </h2></div>
+        <div ID="SectionName5" STYLE="display:none">
+            <h2 class="text-center">
+                BPL Verification Users
+            </h2>
+            <div style="margin-left: 30px">
+                SORT BY: <a th:href="@{'/admin/sorting-user/all/0'}">
+                <button
+                        class="btn btn-outline-primary">ALL
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-user/true/0'}">
+                <button
+                        class="btn btn-outline-primary">Verified
+                </button>
+            </a> <a
+                    th:href="@{/admin/sorting-user/false/0}">
+                <button
+                        class="btn btn-outline-primary">Un Verified
+                </button>
+            </a> <a
+                    th:href="@{/admin/sorting-user/request/0}">
+                <button
+                        class="btn btn-outline-primary">Seller Requests
+                </button>
+            </a><a
+                    th:href="@{/admin/sorting-user/ROLE_BUYER/0}">
+                <button
+                        class="btn btn-outline-primary">Buyers
+                </button>
+            </a> <a
+                    th:href="@{/admin/sorting-user/ROLE_SELLER/0}">
+                <button
+                        class="btn btn-outline-primary">Sellers
+                </button>
+            </a>&nbsp;<a
+                    th:href="@{'/admin/sorting-user/archive/0'}">
+                <button
+                        class="btn btn-outline-primary">Archive
+                </button>
+            </a> <a
+                    th:href="@{'/admin/sorting-user/unarchive/0'}">
+                <button
+                        class="btn btn-outline-primary">Un Archive
+                </button>
+            </a>
+            </div>
+            <div style="margin: 10px" class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">UID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Number</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Zip-Code</th>
+                        <th scope="col">Created Date</th>
+                        <th scope="col">ROLE</th>
+                        <th scope="col">Archive</th>
+                        <th scope="col">Verified</th>
+                        <th scope="col">Admin Verified</th>
+                        <th scope="col">Flag Count</th>
+                        <th scope="col">Admin</th>
+                        <th scope="col">Dreamer</th>
+                        <th scope="col">User Image</th>
+                        <th scope="col">Government ID</th>
+                        <th scope="col">BPL Card</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:classappend="table-danger" class="" th:each="l:${bplUsers}">
+                        <th th:text="${'KTNUID'+l.id}"></th>
+
+                        <td><a href="#"
+                               th:href="@{'/admin/show-my-products/'+${l.id}+'/0'}"
+                               th:text="${l.name}"></a></td>
+                        <td th:text="${l.email}"></td>
+                        <td th:text="${l.number}"></td>
+                        <th th:text="${l.address}"></th>
+                        <td th:text="${l.city}"></td>
+                        <td th:text="${l.state}"></td>
+                        <td th:text="${l.pinCode}"></td>
+                        <td th:text="${l.created_date}"></td>
+                        <td th:text="${l.role}"></td>
+                        <td th:text="${l.archive}"></td>
+                        <td th:text="${l.verifiedStatus}"></td>
+                        <td th:text="${l.verifyByAdmin}"></td>
+                        <td th:text="${l.flagCount}"></td>
+                        <td th:text="${l.admin}"></td>
+                        <td th:text="${l.dreamer}"></td>
+
+                        <td><img th:src="@{'/img/'+${data.userImageUrl}}" class="img-responsive" alt="Not Available"></td>
+                        <td><img th:src="@{'/img/'+${data.governmentIdImageUrl}}" class="img-responsive" alt="Not Available"></td>
+                        <td><img th:src="@{'./img/'+${data.bplCardUrl}}" class="img-responsive" alt="Not Available"></td>
+
+
+                        <td>
+                            <div>
+                                <a th:href="@{'/user/bpl-verify/'+${l.id}}">
+                                    <button
+                                            onclick="confirm('This User Will Become Dreamer, Are You Sure Want To Continue.. ')">
+                                        <i class='fas fa-user-check' style='font-size: 24px'></i>
+                                    </button>
+                                </a> <a th:href="@{'/user/bpl-verify/'+${l.id}}">
+                                <button
+                                        onclick="confirm('Are You Sure Want To Continue.. ')">
+                                    <i class='fas fa-user-slash'
+                                       style='font-size: 24px; color: red;'></i>
+                                </button>
+                            </a> <br>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <br> <br>
+            <!-- This is Pagination -->
+            <!--                    <nav aria-label="Page navigation example">-->
+            <!--                        <ul class="pagination justify-content-center">-->
+            <!--                            <li th:classappend="${currentpage!=0}?'':'disabled'"-->
+            <!--                                class="page-item"><a th:href="@{${currentpage-1}}"-->
+            <!--                                                     class="page-link" href="#" tabindex="-1">Previous</a></li>-->
+
+            <!--                            <li th:classappend="${currentpage==i-1?'active':''}"-->
+            <!--                                th:each="i : ${#numbers.sequence(1,totalpages)}" class="page-item"><a-->
+            <!--                                    th:href="@{${i-1}}" class="page-link" href="#"><span-->
+            <!--                                    th:text="${i}"></span></a></li>-->
+
+
+            <!--                            <li th:classappend="${currentpage+1 !=totalpages}?'':'disabled'"-->
+            <!--                                class="page-item"><a th:href="@{${currentpage+1}}"-->
+            <!--                                                     class="page-link" href="#">Next</a></li>-->
+            <!--                        </ul>-->
+            <!--                    </nav>-->
+            <script src='https://kit.fontawesome.com/a076d05399.js'
+                    crossorigin='anonymous'></script>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- bootstrap js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+</script>
+
+<!-- typer.js -->
+<script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
+
+<!-- jquery script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- lib for - Waypoints is the easiest way to trigger a function when you scroll to an element -->
+<!-- <script src="vendors/js/jquery.waypoints.min.js"></script>
+<script src="resources/js/script.js"></script> -->
+<script src=" https://unpkg.com/ionicons@5.2.3/dist/ionicons.js">
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+</body>
+
+</html>

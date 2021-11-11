@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyemleaf.org">
+<head>
+    <title>Sign Up | KhawB-The NGO</title>
+    <link rel="stylesheet" th:href="@{css/ls.css}"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+            rel="stylesheet"
+    />
+</head>
+<body>
+<div class="signup-box">
+    <h1>Sign Up</h1>
+    <h4>It's free and only takes a minute</h4>
+    <form th:action="@{/register}" action="#" method="POST" enctype="multipart/form-data">
+        <label>First Name</label>
+        <input type="text" placeholder="Enter Name" name="name" required/>
+        <label>Email Id</label>
+        <input type="email" placeholder="Enter Email" name="email" required/>
+        <label>Number</label>
+        <input type="number" placeholder="Enter Number" minlength="10" maxlength="10" name="number" required/>
+        <label>Address</label>
+        <input type="text" placeholder="Enter Address" name="address" required/>
+        <label>City</label>
+        <input type="text" placeholder="Enter city" name="city" required/>
+        <label>State</label>
+        <input type="text" placeholder="Enter state" name="state" required/>
+        <label>Pin Code</label>
+        <input type="number" placeholder="Enter pincode" name="pinCode" minlength="6" maxlength="6" required/>
+        <label>Password</label>
+        <input type="password" placeholder="Enter Password" name="password" required/>
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Enter Password Again" name="cPassword" required/>
+        <label>Choose Your Image</label>
+        <input type="file" placeholder="Choose Your Image" name="profile" required/>
+        <label>Upload Any Government Id Proof (For Verification)</label>
+        <input type="file" placeholder="Upload Any Government Id Proof (For Verification) " name="govtId" required/>
+        <input type="submit" value="Submit"/>
+    </form>
+    <p>
+        By clicking the Sign Up button,you agree to our <br/>
+        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+    </p>
+</div>
+<p class="para-2">
+    Already have an account? <a th:href="@{'/login-form'}">Login here</a>
+</p>
+</body>
+</html>
+

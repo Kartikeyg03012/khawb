@@ -10,8 +10,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
 @ToString
+@Getter
+@Setter
 public class Testimonials {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

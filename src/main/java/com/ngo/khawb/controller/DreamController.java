@@ -8,18 +8,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.List;
 
-@RestController
-@RequestMapping("/user")
+@Controller
+@RequestMapping("/user-dream")
 public class DreamController {
   private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
   @Autowired private DreamService dreamService;
   @Autowired private UserService userService;
 
-  @GetMapping("/my-dream/{id}")
+  @GetMapping("/{id}")
   public ResponseEntity<Object> getDreamById(Principal p, @PathVariable("id") long id) {
     LOGGER.info("Dream id is {}", id);
     User user = userService.getDataByEmailId(p.getName());
@@ -34,20 +38,39 @@ public class DreamController {
   }
 
   @PostMapping("/add-dream")
-  public ResponseEntity<String> addDream(@RequestBody Dreams dream) {
+  public String addDream(
+      @ModelAttribute Dreams dream, Model model, Principal p, HttpSession session) {
     LOGGER.info("data send by the dream: {}", dream);
-    Dreams save = dreamService.addDreams(dream);
-    if (save != null) {
-      LOGGER.info("dream Created: {}", save);
-      return ResponseEntity.ok("Success");
+    User data = userService.getDataByEmailId(p.getName());
+    Dreams save = new Dreams();
+    dream.setUser(data);
+    dream.setStatus("Approved Pending");
+    dream.setAdminVerified(false);
+    dream.setReportCount(0);
+    dream.setUpVote(0);
+    dream.setArchive(false);
+    if (dream.isPaid()) {
+      if (data.isDreamer()) {
+        save = dreamService.addDreams(dream);
+        session.setAttribute("type", "alert-success");
+        session.setAttribute("msg", "Successfully Added ");
+      } else {
+        LOGGER.warn("Something went wrong");
+        session.setAttribute("type", "alert-danger");
+        session.setAttribute(
+            "msg",
+            "Profile not completed for demanding any financial help OR Profile Under Verification!");
+      }
     } else {
-      LOGGER.warn("Something went wrong");
-      return ResponseEntity.badRequest().body("Something went wrong");
+      save = dreamService.addDreams(dream);
+      session.setAttribute("type", "alert-success");
+      session.setAttribute("msg", "Successfully Added!");
     }
+    return "redirect:/user/dashboard";
   }
 
   @GetMapping("/my-dreams")
-  public ResponseEntity<Object> getAllDreams(Principal p) {
+  public ResponseEntity<List<Dreams>> getAllDreams(Principal p) {
     User user = userService.getDataByEmailId(p.getName());
     if (!user.getDreams().isEmpty()) {
       LOGGER.info("dreams : {}", user.getDreams());
@@ -58,6 +81,83 @@ public class DreamController {
     }
   }
 
+  @GetMapping("/update-page/{id}")
+  public String updatePage(Principal p, @PathVariable("id") long id, Model model) {
+    User user = userService.getDataByEmailId(p.getName());
+    Dreams dreams = dreamService.getDreamById(id);
+    model.addAttribute("data", user);
+    model.addAttribute("dream", dreams);
+    return "user-pages/updateDream";
+  }
 
+  @PostMapping("/update-dream")
+  public String updateDream(
+      Principal p, @ModelAttribute Dreams dreams, Model model, HttpSession session) {
+    LOGGER.info("controller called!");
+    User getData = userService.getDataByEmailId(p.getName());
+    Dreams oldDreamData = dreamService.getDreamById(dreams.getId());
+    dreams.setUser(getData);
+    dreams.setArchive(oldDreamData.isArchive());
+    dreams.setReportCount(oldDreamData.getReportCount());
+    dreams.setStatus(oldDreamData.getStatus());
+    dreams.setUpVote(oldDreamData.getUpVote());
+    LOGGER.info("dream id is {} and data {}", dreams.getId(), dreams);
+    if (dreams != null) {
+      dreamService.updateDream(dreams);
+      model.addAttribute("data", getData);
+      session.setAttribute("type", "alert-success");
+      session.setAttribute("msg", "Success Fully Updated!");
+    } else {
+      model.addAttribute("data", getData);
+      session.setAttribute("type", "alert-danger");
+      session.setAttribute("msg", "Something Went Wrong!");
+    }
+    return "redirect:/user/dashboard";
+  }
 
+  @GetMapping("/status/{id}/{text}")
+  public String markAsComplete(
+      Principal p,
+      @PathVariable("id") long id,
+      @PathVariable("text") String text,
+      Model model,
+      HttpSession session) {
+    User getData = userService.getDataByEmailId(p.getName());
+    Dreams dreams = dreamService.getDreamById(id);
+    if (getData.getId() == dreams.getUser().getId()) {
+      dreams.setStatus(text);
+      dreams.setArchive(true);
+      dreamService.updateDream(dreams);
+      model.addAttribute("data", getData);
+      session.setAttribute("type", "alert-success");
+      session.setAttribute("msg", "Success Fully Updated!");
+    } else {
+      model.addAttribute("data", getData);
+      session.setAttribute("type", "alert-danger");
+      session.setAttribute("msg", "Something Went Wrong!");
+    }
+    return "redirect:/user/dashboard";
+  }
+
+  @GetMapping("/remove/{id}")
+  public String removeDream(
+      Principal p, @PathVariable("id") long id, Model model, HttpSession session) {
+    User data = userService.getDataByEmailId(p.getName());
+    try {
+      Dreams dreams = dreamService.getDreamById(id);
+      if (data.getId() == dreams.getUser().getId()) {
+        dreams.setUser(null);
+        dreamService.deleteDream(dreams);
+        System.out.println("Data Deleted with id: " + id);
+      } else {
+        throw new Exception();
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      session.setAttribute("type", "alert-danger");
+      session.setAttribute("msg", "Something Went Wrong!!!");
+    }
+    model.addAttribute("data", data);
+    return "redirect:/user/dashboard";
+  }
 }

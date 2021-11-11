@@ -15,7 +15,7 @@ public class TestimonialServiceImpl implements TestimonialsService {
 
   @Override
   public Testimonials addTestimonials(Testimonials testimonials) {
-    return null;
+    return testimonialRepository.save(testimonials);
   }
 
   @Override
