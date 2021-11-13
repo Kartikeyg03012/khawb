@@ -74,4 +74,8 @@ public class User {
   private List<Testimonials> testimonials = new ArrayList<>();
 
   @ElementCollection private List<Long> wishToDonate = new ArrayList<>();
+  @ElementCollection private List<Long> upVoteList = new ArrayList<>();
+  @ElementCollection private List<Long> reportList = new ArrayList<>();
+  @ElementCollection private List<Long> saveForLater = new ArrayList<>();
+
 }

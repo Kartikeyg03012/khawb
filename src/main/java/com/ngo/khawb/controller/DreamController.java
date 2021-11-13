@@ -1,5 +1,6 @@
 package com.ngo.khawb.controller;
 
+import com.ngo.khawb.model.DreamStatus;
 import com.ngo.khawb.model.Dreams;
 import com.ngo.khawb.model.User;
 import com.ngo.khawb.service.DreamService;
@@ -125,7 +126,7 @@ public class DreamController {
     User getData = userService.getDataByEmailId(p.getName());
     Dreams dreams = dreamService.getDreamById(id);
     if (getData.getId() == dreams.getUser().getId()) {
-      dreams.setStatus(text);
+      dreams.setStatus(DreamStatus.COMPLETED.name());
       dreams.setArchive(true);
       dreamService.updateDream(dreams);
       model.addAttribute("data", getData);
@@ -158,6 +159,56 @@ public class DreamController {
       session.setAttribute("msg", "Something Went Wrong!!!");
     }
     model.addAttribute("data", data);
+    return "redirect:/user/dashboard";
+  }
+
+  @GetMapping("/verify/{id}")
+  public String adminVerify(Principal p, @PathVariable("id") long id, HttpSession session) {
+    User user = userService.getDataByEmailId(p.getName());
+    if (user.isAdmin()) {
+      Dreams byID = dreamService.getDreamById(id);
+      byID.setId(id);
+      if (byID.isAdminVerified()) {
+        byID.setAdminVerified(false);
+      } else {
+        byID.setAdminVerified(true);
+      }
+      dreamService.updateDream(byID);
+    }
+    session.setAttribute("type", "alert-success");
+    session.setAttribute("msg", "Success Fully Updated!");
+    return "redirect:/user/dashboard";
+  }
+
+  @GetMapping("/archive/{id}")
+  public String adminArchive(Principal p, @PathVariable("id") long id, HttpSession session) {
+    User user = userService.getDataByEmailId(p.getName());
+    if (user.isAdmin()) {
+      Dreams byID = dreamService.getDreamById(id);
+      byID.setId(id);
+      if (byID.isArchive()) {
+        byID.setArchive(false);
+      } else {
+        byID.setArchive(true);
+      }
+      dreamService.updateDream(byID);
+    }
+    session.setAttribute("type", "alert-success");
+    session.setAttribute("msg", "Success Fully Updated!");
+    return "redirect:/user/dashboard";
+  }
+
+  @GetMapping("/complete/{id}")
+  public String completeByAdmin(Principal p, @PathVariable("id") long id, HttpSession session) {
+    User user = userService.getDataByEmailId(p.getName());
+    if (user.isAdmin()) {
+      Dreams byID = dreamService.getDreamById(id);
+      byID.setId(id);
+      byID.setStatus(DreamStatus.COMPLETED.name());
+      dreamService.updateDream(byID);
+    }
+    session.setAttribute("type", "alert-success");
+    session.setAttribute("msg", "Success Fully Updated!");
     return "redirect:/user/dashboard";
   }
 }

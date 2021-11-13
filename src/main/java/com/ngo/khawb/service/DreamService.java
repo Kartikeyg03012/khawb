@@ -23,4 +23,6 @@ public interface DreamService {
   List<Dreams> getWishListProducts(Iterable<Long> ids);
 
   Page<Dreams> getAll(Pageable pageable);
+
+  Page<Dreams> findAllDreamsRandomly(Boolean verify, Boolean archive, Pageable pageable);
 }

@@ -78,31 +78,6 @@ input:checked + .slider:before {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
 
     <!-- animate css -->
@@ -366,6 +341,12 @@ input:checked + .slider:before {
 
 
 
+
+
+
+
+
+
                     </script>
                     <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
@@ -501,57 +482,7 @@ input:checked + .slider:before {
 
 <div th:if="${data.admin==true}">
     <br/>
-    <!--    <div class="container">-->
-    <!--        <p class="container my-3 ml-5">-->
-    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample1"-->
-    <!--                    aria-expanded="false" aria-controls="collapseExample1">-->
-    <!--                Show Dreams-->
-    <!--            </button>-->
-    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample2"-->
-    <!--                    aria-expanded="false" aria-controls="collapseExample2">-->
-    <!--                Show Users-->
-    <!--            </button>-->
-    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample"-->
-    <!--                    aria-expanded="false" aria-controls="collapseExample">-->
-    <!--                Show Queries-->
-    <!--            </button>-->
-    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample3"-->
-    <!--                    aria-expanded="false" aria-controls="collapseExample3">-->
-    <!--                Donation Requests-->
-    <!--            </button>-->
-    <!--            <button class="btn btn-dark mx-2" type="button" data-toggle="collapse" data-target="#collapseExample4"-->
-    <!--                    aria-expanded="false" aria-controls="collapseExample4">-->
-    <!--                My Wishlist-->
-    <!--            </button>-->
-    <!--        </p>-->
-    <!--        <div class="collapse" id="collapseExample1">-->
-    <!--            <div class="card card-body text-dark">-->
 
-    <!--                <h2>this is 1</h2>-->
-    <!--            </div>-->
-    <!--        </div>-->
-
-    <!--        <div class="collapse" id="collapseExample2">-->
-    <!--            <div class="card card-body text-dark">-->
-    <!--                <h2>this is 2</h2>-->
-
-    <!--            </div>-->
-    <!--        </div>-->
-
-    <!--        <div class="collapse" id="collapseExample3">-->
-    <!--            <div class="card card-body text-dark">-->
-    <!--                <h2>this is 3</h2>-->
-    <!--            </div>-->
-    <!--        </div>-->
-
-    <!--        <div class="collapse" id="collapseExample4">-->
-    <!--            <div class="card card-body text-dark">-->
-    <!--                <h2>this is 4</h2>-->
-    <!--            </div>-->
-    <!--        </div>-->
-
-
-    <!--    </div>-->
     <script>
 function ShowAndHide() {
     var x = document.getElementById('SectionName');
@@ -561,12 +492,6 @@ function ShowAndHide() {
         x.style.display = 'none';
     }
 }
-
-
-
-
-
-
 
 
 
@@ -588,12 +513,6 @@ function ShowAndHide2() {
 
 
 
-
-
-
-
-
-
     </script>
     <script>
 function ShowAndHide3() {
@@ -604,11 +523,6 @@ function ShowAndHide3() {
         x.style.display = 'none';
     }
 }
-
-
-
-
-
 
 
 
@@ -631,11 +545,6 @@ function ShowAndHide4() {
 
 
 
-
-
-
-
-
     </script>
     <script>
 function ShowAndHide5() {
@@ -652,6 +561,17 @@ function ShowAndHide5() {
 
 
 
+    </script>
+    <script>
+function ShowAndHide6() {
+    var x = document.getElementById('SectionName6');
+    if (x.style.display == 'none') {
+        x.style.display = 'block';
+    } else {
+        x.style.display = 'none';
+    }
+}
+
 
 
 
@@ -665,6 +585,8 @@ function ShowAndHide5() {
             <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide3()">Show Queries</button>
             <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide4()">Donation Requests</button>
             <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide5()">BPL Verification</button>
+            <button class="btn btn-dark mx-2" type="button" ONCLICK="ShowAndHide6()">Contact Queries</button>
+
         </p>
         <div ID="SectionName" STYLE="display:none">
             <h2 class="text-center">
@@ -750,17 +672,17 @@ function ShowAndHide5() {
                         <td th:text="${l.upVote}"></td>
                         <td>
                             <div>
-                                <a th:href="@{'/admin/product-done/'+${l.id}}">
+                                <a th:href="@{'/user-dream/verify/'+${l.id}}">
                                     <button
                                             onclick="confirm('Are You Sure Want To Continue.. ')">
                                         <i class='fas fa-power-off' style='font-size: 24px;color:blue'></i>
                                     </button>
-                                </a> <a th:href="@{'/admin/product-visible/'+${l.id}}">
+                                </a> <a th:href="@{'/user-dream/complete/'+${l.id}}">
                                 <button
                                         onclick="confirm('Are You Sure Want To Continue.. ')">
                                     <i class='fas fa-check-circle' style='font-size: 24px'></i>
                                 </button>
-                            </a> <a th:href="@{'/admin/archive-product/'+${l.id}}">
+                            </a> <a th:href="@{'/user-dream/archive/'+${l.id}}">
                                 <button
                                         onclick="confirm('Are You Sure Want To Continue.. ')">
                                     <i class='fas fa-eye-slash'
@@ -1089,6 +1011,116 @@ function ShowAndHide5() {
             <!--                    </nav>-->
             <script src='https://kit.fontawesome.com/a076d05399.js'
                     crossorigin='anonymous'></script>
+        </div>
+        <div ID="SectionName6" STYLE="display:none"><h2 class="text-center">
+            All Queries
+        </h2>
+            <div>
+                <div style="margin-left: 30px">
+                    SORT BY: <a th:href="@{'/admin/sorting-query/all/0'}">
+                    <button
+                            class="btn btn-outline-primary">ALL
+                    </button>
+                </a> <a
+                        th:href="@{'/admin/sorting-query/Complete/0'}">
+                    <button
+                            class="btn btn-outline-primary">Complete
+                    </button>
+                </a> <a
+                        th:href="@{'/admin/sorting-query/Un Resolve/0'}">
+                    <button
+                            class="btn btn-outline-primary">Un Resolve
+                    </button>
+                </a> <a
+                        th:href="@{/admin/sorting-query/Process/0}">
+                    <button
+                            class="btn btn-outline-primary">Process
+                    </button>
+                </a>
+                </div>
+                <div th:if="${session.msg}" th:classappend="${session.type}"
+                     class="alert" role="alert">
+                    <p th:text="${session.msg}"></p>
+                    <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+                </div>
+                <div style="margin: 10px" class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">UID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Query</th>
+                            <th scope="col">Current Status</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Last Update Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr
+                                th:classappend="${l.status=='Complete'}?'table-success':'table-danger'"
+                                class="" th:each="l:${contact}">
+                            <th th:text="${'KTNQS'+l.id}"></th>
+
+                            <td><a th:text="${l.name}"></a></td>
+
+
+                            <td th:text="${l.email}"></td>
+
+                            <td th:text="${l.number}"></td>
+                            <th th:text="${l.subject}"></th>
+                            <td th:text="${l.message}"></td>
+                            <td th:text="${l.status}"></td>
+                            <td th:text="${l.create_date}"></td>
+                            <td th:text="${l.update_date}"></td>
+                            <td>
+                                <div>
+                                    <a th:href="@{'/user/update-query/solve/'+${l.id}}">
+                                        <button
+                                                onclick="confirm('Are You Sure Want To Continue.. ')">
+                                            <i class='fas fa-check' style='font-size: 24px'></i>
+                                        </button>
+                                    </a> <a th:href="@{'/user/update-query/unsolve/'+${l.id}}">
+                                    <button
+                                            onclick="confirm('Are You Sure Want To Continue.. ')">
+                                        <i class='fas fa-times'
+                                           style='font-size: 24px; color: red;'></i>
+                                    </button>
+                                </a> <br>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <br> <br>
+                <!-- This is Pagination -->
+                <!--                <nav aria-label="Page navigation example">-->
+                <!--                    <ul class="pagination justify-content-center">-->
+                <!--                        <li th:classappend="${currentpage!=0}?'':'disabled'"-->
+                <!--                            class="page-item"><a th:href="@{${currentpage-1}}"-->
+                <!--                                                 class="page-link" href="#" tabindex="-1">Previous</a></li>-->
+
+                <!--                        <li th:classappend="${currentpage==i-1?'active':''}"-->
+                <!--                            th:each="i : ${#numbers.sequence(1,totalpages)}" class="page-item"><a-->
+                <!--                                th:href="@{${i-1}}" class="page-link" href="#"><span-->
+                <!--                                th:text="${i}"></span></a></li>-->
+
+
+                <!--                        <li th:classappend="${currentpage+1 !=totalpages}?'':'disabled'"-->
+                <!--                            class="page-item"><a th:href="@{${currentpage+1}}"-->
+                <!--                                                 class="page-link" href="#">Next</a></li>-->
+                <!--                    </ul>-->
+                <!--                </nav>-->
+                <script src='https://kit.fontawesome.com/a076d05399.js'
+                        crossorigin='anonymous'></script>
+
+            </div>
         </div>
     </div>
 

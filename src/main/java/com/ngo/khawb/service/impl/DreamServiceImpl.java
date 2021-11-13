@@ -50,4 +50,9 @@ public class DreamServiceImpl implements DreamService {
   public Page<Dreams> getAll(Pageable pageable) {
     return dreamsRepository.findAll(pageable);
   }
+
+  @Override
+  public Page<Dreams> findAllDreamsRandomly(Boolean verify, Boolean archive, Pageable pageable) {
+    return dreamsRepository.findAllProductsRandomly(verify,archive,pageable);
+  }
 }

@@ -1,8 +1,10 @@
 package com.ngo.khawb.controller;
 
+import com.ngo.khawb.model.Dreams;
 import com.ngo.khawb.model.MailModel;
 import com.ngo.khawb.model.SOS;
 import com.ngo.khawb.model.User;
+import com.ngo.khawb.service.DreamService;
 import com.ngo.khawb.service.UserService;
 import com.ngo.khawb.service.impl.MailService;
 import com.ngo.khawb.service.impl.SmsSendingService;
@@ -11,6 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,6 +37,7 @@ import java.security.Principal;
 public class HomeController {
   private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
   @Autowired private UserService userService;
+  @Autowired private DreamService dreamService;
   @Autowired private MailService mailService;
   @Autowired private SosService sosService;
   @Autowired private SmsSendingService smsService;
@@ -46,6 +52,11 @@ public class HomeController {
   public String showHomePage(Model model, Principal p) {
     User userData = userService.getDataByEmailId(p.getName());
     LOGGER.info("showing Home page");
+    Pageable pageable = PageRequest.of(0, 10);
+    Page<Dreams> allDreams = dreamService.findAllDreamsRandomly(true,false,pageable);
+
+    model.addAttribute("allDreams", allDreams);
+    //model.addAttribute("testimonials",testinomials);
     model.addAttribute("data", userData);
     return "homepage";
   }
