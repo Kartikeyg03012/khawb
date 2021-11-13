@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,12 +13,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
 @ToString
+@Setter
+@Getter
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  private int id;
 
   @Column(unique = true)
   @NotBlank(message = "Email can't be blank")
@@ -34,7 +36,19 @@ public class User {
   private String password;
 
   private String token;
-  private String created_date;
+  private String created_date = new Date().toGMTString();
+
+  @NotBlank(message = "Address can't be blank")
+  private String address;
+
+  @NotBlank(message = "City can't be blank")
+  private String city;
+
+  @NotBlank(message = "State can't be blank")
+  private String state;
+
+  @NotBlank(message = "PinCode can't be blank")
+  private int pinCode;
 
   private String role;
 
@@ -45,10 +59,13 @@ public class User {
   private String governmentIdImageUrl;
 
   private String bplCardUrl;
+
   private boolean verifiedStatus = true;
   private boolean verifyByAdmin = true;
   private boolean archive = false;
   private int flagCount;
+  private boolean dreamer;
+  private boolean admin;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
   private List<Dreams> dreams = new ArrayList<>();
@@ -56,5 +73,9 @@ public class User {
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
   private List<Testimonials> testimonials = new ArrayList<>();
 
-  @ElementCollection private List<Integer> wishToDonate = new ArrayList<>();
+  @ElementCollection private List<Long> wishToDonate = new ArrayList<>();
+  @ElementCollection private List<Long> upVoteList = new ArrayList<>();
+  @ElementCollection private List<Long> reportList = new ArrayList<>();
+  @ElementCollection private List<Long> saveForLater = new ArrayList<>();
+
 }

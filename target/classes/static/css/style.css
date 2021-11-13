@@ -1,0 +1,347 @@
+/* #213458  darkblue*/
+/* #DDDDDD   grey */
+/* #1D7D81 c green*/
+
+/* font-family: 'Comic Neue', cursive; */
+/* font-family: 'Source Sans Pro', sans-serif; */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* --------- */
+/* navbar */
+.color {
+    color: #1D7D81;
+}
+
+.navbar {
+    /* box-shadow: 2px 2px 5px #3292a6; */
+    opacity: 0.97;
+    background: #ffffff;
+}
+
+.navbar .nav-item {
+    font-size: 1rem;
+    padding-right: 1.4rem;
+}
+
+
+
+/* button */
+.btn {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
+}
+
+.btn:hover .btn-slide-show-text1 {
+    margin-left: 55px;
+    color: white;
+}
+
+.btn-moving-gradient {
+    height: 45px;
+    width: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    text-align: center;
+    padding: 0 !important;
+}
+
+.btn-moving-gradient:hover {
+    transition: all 0.5s ease-in-out 0s;
+    background-position: 100% 0px;
+    color: rgb(255, 248, 248);
+}
+
+.btn-moving-gradient--red {
+    background-image: linear-gradient(90deg, rgb(239, 37, 60), rgb(239, 148, 37), rgb(239, 104, 37), rgb(239, 35, 60));
+    color: rgb(240, 235, 235);
+}
+
+.padd{
+    padding-top: 10px !important;
+}
+
+.ft {
+    font-family: 'Comic Neue', cursive;
+}
+
+.nav-item .nav-link:hover {
+    color: black !important;
+}
+
+/* --------- */
+/* head */
+html,
+body {
+    background-color: #fff;
+    color: rgb(243, 234, 234);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+.gradient-text {
+    /* Fallback: Set a background color. */
+    background-color: black;
+    font-weight: bolder;
+
+    /* Create the gradient. */
+    background-image: linear-gradient(45deg, #ffffff, #888686, #888686, #888686);
+
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.diff-font {
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
+    font-size: 3rem;
+    color: #000000;
+}
+
+.diff-font2 {
+    font-family: 'Comic Neue', cursive;
+    font-weight: 300;
+    font-size: 2rem;
+    color: #000000;
+}
+
+
+
+.bgImage {
+    background-image: linear-gradient(rgba(50, 146, 166, 0.8), rgba(50, 146, 166, 0.8)), url(../img/bg.jpg);
+
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    /* background-attachment: fixed; */
+
+}
+
+/* button */
+.btn {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.btn:hover .btn-slide-show-text1 {
+    margin-left: 65px;
+}
+
+.btn-shadow {
+    display: inline-block;
+    margin: 3px;
+    font-weight: 500;
+    line-height: 24px;
+    color: rgb(255, 255, 255);
+    position: relative;
+    text-align: center;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.btn-shadow::before {
+    content: "";
+    height: 40px;
+    position: absolute;
+    bottom: -1px;
+    left: 10px;
+    right: 10px;
+    z-index: 0;
+    border-radius: 0.2em;
+    filter: blur(14px) brightness(0.9);
+}
+
+.btn-shadow span {
+    display: inline-block;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease-out 0s;
+    padding: 16px 60px;
+    border-radius: 0.2em;
+    position: relative;
+    z-index: 2;
+    will-change: transform, filter;
+}
+
+.btn-shadow:hover {
+    color: rgb(255, 255, 255);
+}
+
+.btn-shadow:hover span {
+    filter: brightness(0.9) contrast(1.2);
+    transform: scale(0.96);
+}
+
+.btn-shadow:hover::before {
+    bottom: 8px;
+    filter: blur(6px) brightness(0.8);
+    left: 15px;
+    right: 15px;
+}
+
+.btn-shadow--blue span {
+    background: #1D7D81;
+}
+
+/*  paragraph */
+.para {
+    padding-right: 250px !important;
+    margin-right: 200px !important;
+    color: #a39d9d !important;
+    text-align: justify;
+}
+
+/* animation on the button */
+.animate__animated.animate__pulse {
+    --animate-duration: 1s;
+}
+
+/* -------- */
+/* features */
+:root {
+    --primary: #3292a6;
+}
+
+.myCard-white {
+    border-color: #1D7D81;
+    color: #1D7D81;
+
+}
+
+.myCard-colored {
+    background-color: #000000 !important;
+}
+
+/* --------- */
+/* dreams */
+.bg-color {
+    background-color: #DDDDDD;
+}
+
+/* 
+#authors img {
+    margin-top: -50px; } */
+#authors .card {
+    color: rgb(17, 17, 17);
+}
+
+#authors .card:hover {
+    background: #1D7D81;
+    color: #fff !important;
+}
+
+#authors .fab {
+    color: #fff;
+}
+
+
+.space {
+    padding-bottom: 50px;
+
+}
+
+.bot-space {
+    padding-bottom: 100px;
+}
+
+/* -------- */
+/* testimonials */
+.size {
+    height: 10rem;
+}
+
+.colorr {
+    background-color: grey;
+}
+
+/* ------ */
+/* newsletter */
+#newsletter {
+    /* background-image: linear-gradient(rgba(60, 130, 145, 0.9), rgba(60, 130, 145, 0.9)), url("./bg.jpg");
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+    /* background-attachment: fixed; */
+    background-color: #DDDDDD !important;
+}
+
+.btn-shadow--white span {
+    background: #000000 !important;
+    color: #ffffff;
+}
+
+/* --------- */
+/* footer */
+html {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+.clr {
+    color: rgb(14, 13, 13) !important;
+}
+
+.bg {
+    /* background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); */
+    background-color: rgba(51, 139, 156, 0.8);
+}
+
+li a {
+    color: #fff;
+}
+
+.imgg{
+    height: 300px !important;
+}
+.fa-envelope{
+    color: #fff !important;
+}
+
+.fa-envelope:hover{
+    color: red !important;
+}
+
+.fa-twitter{
+
+    color: #fff !important;
+}
+.fa-twitter:hover{
+    color: darkblue !important;
+}
+
+.fa-instagram{
+
+    color: #fff !important;
+}
+.fa-instagram:hover{
+    color: rgb(219, 22, 88) !important;
+}

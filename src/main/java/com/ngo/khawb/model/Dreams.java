@@ -11,8 +11,9 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
 @ToString
+@Getter
+@Setter
 public class Dreams {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +30,7 @@ public class Dreams {
 
   private Long amount;
   private boolean adminVerified;
+  private boolean archive;
   private String status;
   private int reportCount;
   private int upVote;
